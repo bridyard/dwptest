@@ -2,7 +2,6 @@ package com.dwptest.api;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +32,7 @@ public class DwpTestApiController {
 		
 		List<User> nonResidentUsers = mRestClient.getUsersLocatedInCity(aCity);
 		
-		//Remove any duplication between the two lists		
+		//Combine lists and remove any duplicates		
 		List<User> allUsers = combineAndRemoveDuplicates(residentUsers, nonResidentUsers);
 		
 		log.info("Returning " + allUsers.size() + " users for " + aCity);

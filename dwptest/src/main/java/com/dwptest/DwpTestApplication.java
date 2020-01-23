@@ -1,7 +1,5 @@
 package com.dwptest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -16,15 +14,13 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class DwpTestApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(DwpTestApplication.class);
-
-	public static void main(String[] args) {
-		SpringApplication.run(DwpTestApplication.class, args);
+	public static void main(String[] aArgs) {
+		SpringApplication.run(DwpTestApplication.class, aArgs);
 	}
 
 	@Bean
-	public RestTemplate restTemplate(RestTemplateBuilder builder) {
-		return builder.build();
+	public RestTemplate restTemplate(RestTemplateBuilder aBuilder) {
+		return aBuilder.build();
 	}
 
 }

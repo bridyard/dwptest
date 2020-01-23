@@ -32,6 +32,14 @@ public class DwpRestClientTest {
 	}
 	
 	@Test
+	public void testGetResidentUsersForNonExistentCity() {
+		String cityName = "Manchester";
+		List<User> response = mRestClient.getResidentUsersForCity(cityName);
+		assertNotNull(response);
+		assertTrue(response.isEmpty());
+	}
+	
+	@Test
 	public void testGetUsersLocatedInLondonSuccess() {
 		String cityName = "London";
 		List<User> response = mRestClient.getUsersLocatedInCity(cityName);
@@ -43,6 +51,14 @@ public class DwpRestClientTest {
 					&& user.getLongitude() > london.getMinimumLongitude());
 			log.debug("User: " + user);
 		}
+	}
+	
+	@Test
+	public void testGetUsersLocatedInNonExistentCity() {
+		String cityName = "Manchester";
+		List<User> response = mRestClient.getUsersLocatedInCity(cityName);
+		assertNotNull(response);
+		assertTrue(response.isEmpty());
 	}
 
 }

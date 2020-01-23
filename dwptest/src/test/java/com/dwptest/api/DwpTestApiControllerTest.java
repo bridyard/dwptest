@@ -44,4 +44,31 @@ public class DwpTestApiControllerTest {
 		assertTrue(result.equals(expectedList));
 	}
 
+	@Test
+	public void testCombineAndRemoveDuplicatesOneEmptyList() {
+		User secondUser = new User(2, "Mickey", "Mouse", "mickey.mouse@disney.com", "192.0.0.1", 50.012345F, 0.012345F);
+		User thirdUser = new User(3, "Minnie", "Mouse", "minnie.mouse@disney.com", "192.0.0.1", 50.012345F, 0.012345F);
+		List<User> firstList = new ArrayList<User>();
+		List<User> secondList = new ArrayList<User>();
+		secondList.add(secondUser);
+		secondList.add(thirdUser);		
+		List<User> expectedList = new ArrayList<User>();
+		expectedList.add(secondUser);
+		expectedList.add(thirdUser);
+		
+		List<User> result = mController.combineAndRemoveDuplicates(firstList, secondList);
+		assertTrue(result.size() == 2);
+		assertTrue(result.equals(expectedList));
+	}
+
+	@Test
+	public void testCombineAndRemoveDuplicatesBothEmptyLists() {
+		List<User> firstList = new ArrayList<User>();
+		List<User> secondList = new ArrayList<User>();
+		
+		List<User> result = mController.combineAndRemoveDuplicates(firstList, secondList);
+		assertNotNull(result);
+		assertTrue(result.isEmpty());
+	}
+
 }

@@ -64,14 +64,19 @@ public class DwpRestClient {
 			return new ArrayList<User>();
 		}
 		List<User> cityUsers = new ArrayList<User> ();
-		City city = City.valueOf(aCity.toUpperCase());
-		for (User user : aUsersToFilter) {
-			if (user.getLatitude() < city.getMaximumLatitude() 
-				&& user.getLatitude() > city.getMinimumLatitude() 
-				&& user.getLongitude() < city.getMaximumLongitude() 
-				&& user.getLongitude() > city.getMinimumLongitude()) {
-				cityUsers.add(user);
+		try {
+		  City city = City.valueOf(aCity.toUpperCase());
+			for (User user : aUsersToFilter) {
+				if (user.getLatitude() < city.getMaximumLatitude() 
+					&& user.getLatitude() > city.getMinimumLatitude() 
+					&& user.getLongitude() < city.getMaximumLongitude() 
+					&& user.getLongitude() > city.getMinimumLongitude()) {
+					cityUsers.add(user);
+				}
 			}
+		}
+		catch (IllegalArgumentException iae) {
+			log.error("City [" + aCity + "] does not exist");
 		}
 		return cityUsers;
 	}
