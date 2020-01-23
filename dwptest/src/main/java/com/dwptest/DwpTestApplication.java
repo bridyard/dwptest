@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * Class containing main method, from which application started.
+ * Class containing main method, from which application should be started.
  * @author Bev Ridyard
  *
  */

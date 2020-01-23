@@ -18,6 +18,16 @@ public class User {
 	private Float mLatitude;
 	private Float mLongitude;
 	
+	public User(int aId, String aFirstName, String aLastName, String aEmail, String aIpAddress, Float aLatitude, Float aLongitude) {
+		mId = aId;
+		mFirstName = aFirstName;
+		mLastName = aLastName;
+		mEmail = aEmail;
+		mIpAddress = aIpAddress;
+		mLatitude = aLatitude;
+		mLongitude = aLongitude;
+	}
+	
 	public int getId() {
 		return mId;
 	}
@@ -72,6 +82,12 @@ public class User {
 	
 	public void setLongitude(Float aLongitude) {
 		mLongitude = aLongitude;
+	}
+	
+	@Override
+	public String toString() {
+		return "User [mId=" + mId + ", mFirstName=" + mFirstName + ", mLastName=" + mLastName + ", mEmail=" + mEmail
+				+ ", mIpAddress=" + mIpAddress + ", mLatitude=" + mLatitude + ", mLongitude=" + mLongitude + "]";
 	}
 
 }
